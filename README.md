@@ -1,27 +1,33 @@
-# How to setup a free Minecraft server & panel in Oracle Cloud
+# How to set up a free Minecraft server & panel in Oracle Cloud
 
-This guide covers process of setting up a free Minecraft server and then using Pterodactyl to create a panel for it. Everything will be hosted in the cloud for free by using Oracle Cloud. All the steps in this guide can be followed for free but be sure to check the [Prerequisites](#Prerequisites).
+This guide covers setting up a free Minecraft server and then using Pterodactyl to create a panel for it. Everything will be hosted in the cloud for free by using Oracle Cloud. All the steps in this guide can be followed for free but be sure to check the [Prerequisites](#Prerequisites).
 
 I will use the Curseforge modpack [Craft to Exile 2](https://www.curseforge.com/minecraft/modpacks/craft-to-exile-2) as an example in this guide, you can also follow along with any other type of server (such as Vanilla).
 
 ## Prerequisites
 
-- **A valid credit card**: this cannot be a single use credit card, we will be using this to sign up for Oracle Cloud and using pay as you go to get the free VM as quick as possible.
-- **A domain:** this is necessary for the Pterodactyl panel. You can follow [this guide](https://www.youtube.com/watch?v=kds41s3tjEY) on how to get a free domain (or skip this if you do not care about the panel).
+- **A valid credit card**: This cannot be a single-use credit card, we will be using this to sign up for Oracle Cloud and using pay-as-you-go to get the free VM as quickly as possible.
+- **A domain:** This is necessary for the Pterodactyl panel. You can follow [this guide](https://www.youtube.com/watch?v=kds41s3tjEY) on how to get a free domain (or skip this if you do not care about the panel).
+
+## Table of Contents
+[Creating a Minecraft server](creating-a-minecraft-server)
+[Pterodactyl Panel](pterodactyl-panel)
 
 ## Creating a Minecraft server
 
-In this section we set up the Minecraft server using Oracle Cloud. If you prefer watching a video instead of reading, then I'd suggest [this video](https://www.youtube.com/watch?v=0kFjEUDJexI) which covers everything of this section.
+In this section we set up the Minecraft server using Oracle Cloud. If you prefer watching a video instead of reading, I'd suggest [this video](https://www.youtube.com/watch?v=0kFjEUDJexI) which covers everything in this section.
 
 > [Note]
-> For some reason Oracle Cloud does not load properly on Google Chrome, so I suggest using a different browser like Microsoft Edge.
+> Oracle Cloud does not always load properly on Google Chrome, so I suggest using a different browser like Microsoft Edge.
 
 ### Creating an account
 
 - Start by [signing up for Oracle Cloud](https://signup.cloud.oracle.com/) if you have not yet done it.
-- Set a Home Region as close as possible, I am from The Netherlands so I will select `Netherlands Northwest (Amsterdam)`![alt text](img/image.png)
+- Set a Home Region as close as possible, I am from The Netherlands so I will select `Netherlands Northwest (Amsterdam)`
+![alt text](img/image.png)
 - Add your Payment / Identity Verification ![alt text](img/image-1.png)
-- As you can see this is where the Credit Card is necessary for ![alt text](img/image-2.png)
+- As you can see this is where the Credit Card is necessary for 
+![alt text](img/image-2.png)
 - $1 will be reserved from your credit card, but you will instantly get it back
 
 ### Setting up the VM instance
@@ -35,14 +41,14 @@ After signing up head to the Oracle Cloud [dashboard](https://cloud.oracle.com/)
 - For the final step on this page you want to click on `Save private key`, this is necessary for later steps where we access the files of the server.
 - Now you can press `Create` at the bottom left of the page.
 
-If you get an error that the VM is not available, then change your settings to `Pay As You Go`. You can do this in the [Billing settings](https://cloud.oracle.com/invoices-and-orders/upgrade-and-payment), under the tab `Upgrade and Manage Payment`. Just like registering this change will reserve about $100 dollars on your credit card and instantly give it back after confirming the credit card.
+If you get an error that the VM is not available, then change your settings to `Pay As You Go`. You can do this in the [Billing settings](https://cloud.oracle.com/invoices-and-orders/upgrade-and-payment), under the tab `Upgrade and Manage Payment`. Just like registering this change will reserve about 100 dollars on your credit card and instantly give it back after confirming the credit card.
 
 #### Setting up the subnet
 
 After creating the VM you will see the overview of the instance. On the tab `Instance information` you will see the **Subnet** under `Primary VNIC`, click on it.
-![alt text](img/image-3.png)
+![alt text](img/image-3.png)\
 This will bring you to the overview of the subnet information, here you want to click on the only option under `Security Lists`.
-![alt text](img/image-4.png)
+![alt text](img/image-4.png)\
 Click on `Add Ingress Rules` and fill in the following:
 
 - Source CIDR: `0.0.0.0/0`
