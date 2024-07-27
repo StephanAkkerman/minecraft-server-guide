@@ -10,8 +10,8 @@ I will use the Curseforge modpack [Craft to Exile 2](https://www.curseforge.com/
 - **A domain:** This is necessary for the Pterodactyl panel. You can follow [this guide](https://www.youtube.com/watch?v=kds41s3tjEY) on how to get a free domain (or skip this if you do not care about the panel).
 
 ## Table of Contents
-[Creating a Minecraft server](creating-a-minecraft-server)
-[Pterodactyl Panel](pterodactyl-panel)
+- [Creating a Minecraft server](creating-a-minecraft-server)
+- [Pterodactyl Panel](pterodactyl-panel)
 
 ## Creating a Minecraft server
 
