@@ -19,9 +19,9 @@ In this section we set up the Minecraft server using Oracle Cloud. If you prefer
 ### Creating an account
 
 - Start by [signing up for Oracle Cloud](https://signup.cloud.oracle.com/) if you have not yet done it.
-- Set a Home Region as close as possible, I am from The Netherlands so I will select `Netherlands Northwest (Amsterdam)`![alt text](image.png)
-- Add your Payment / Identity Verification ![alt text](image-1.png)
-- As you can see this is where the Credit Card is necessary for ![alt text](image-2.png)
+- Set a Home Region as close as possible, I am from The Netherlands so I will select `Netherlands Northwest (Amsterdam)`![alt text](img/image.png)
+- Add your Payment / Identity Verification ![alt text](img/image-1.png)
+- As you can see this is where the Credit Card is necessary for ![alt text](img/image-2.png)
 - $1 will be reserved from your credit card, but you will instantly get it back
 
 ### Setting up the VM instance
@@ -40,9 +40,9 @@ If you get an error that the VM is not available, then change your settings to `
 #### Setting up the subnet
 
 After creating the VM you will see the overview of the instance. On the tab `Instance information` you will see the **Subnet** under `Primary VNIC`, click on it.
-![alt text](image-3.png)
+![alt text](img/image-3.png)
 This will bring you to the overview of the subnet information, here you want to click on the only option under `Security Lists`.
-![alt text](image-4.png)
+![alt text](img/image-4.png)
 Click on `Add Ingress Rules` and fill in the following:
 
 - Source CIDR: `0.0.0.0/0`
@@ -81,12 +81,12 @@ The second method of accessing the terminal of your VM is by using [PuTTY](https
 - Download and install PuTTY
 - Search for `PuTTYgen` in your Windows applications and open it
 - Click on `Load` and search for your private key and open it
-  - Be sure to set the file search on `All Files (*.*)` otherwise you won't be able to find your key. ![alt text](image-5.png)
+  - Be sure to set the file search on `All Files (*.*)` otherwise you won't be able to find your key. ![alt text](img/image-5.png)
 - After loading the key press on `Save private key`
   - You can save it without a passphrase
 - Now open PuTTY
 - Use `ubuntu@{your ip address}` for the host name
-- Then open the Credentials menu, found under Auth ![alt text](image-6.png)
+- Then open the Credentials menu, found under Auth ![alt text](img/image-6.png)
 - Click on `Browse...` behind the text box for `Private key file for authentication`
 - Search for the file you just generated with PuTTYgen and click `Open`
 - Now you can click on `Open` and it will start the connection
@@ -116,7 +116,7 @@ apt upgrade
 ```
 
 After the upgrade you will see the following screen. You can press `Tab` to select `<Ok>` and then enter to exit it.
-![alt text](image-7.png)
+![alt text](img/image-7.png)
 There might be multiple services that need to be restarted, just leave them on their default settings and select `<Ok>`.
 
 ### Firewall settings
@@ -129,9 +129,9 @@ firewall-cmd --reload
 ```
 
 If you get the following screen after installing firewalld then restart the VM.
-![alt text](image-8.png)
+![alt text](img/image-8.png)
 You can restart it by simply heading over to the overview of instances and clicking reboot.
-![alt text](image-9.png)
+![alt text](img/image-9.png)
 
 ##### DBUS Error
 
@@ -189,7 +189,7 @@ This section covers the process of how to set up the Pterodactyl panel, which is
 - Click on `Specialty and previous generation`
 - Select `VM.Standard.E2.1.Micro` (or any other with `Always Free-eligible`)
 - Click on `Select shape`
-  ![alt text](image-10.png)
+  ![alt text](img/image-10.png)
 - Save the private SSH keys
 
 #### Add panel and server to website records
@@ -203,7 +203,7 @@ Head to the website where you bought your domain.
 - Make sure both have a different host name, for instance `minecraft` and `panel`. We will be using this to be able to connect with the Pterodactyl panel.
 
 This is an example of someone that uses the host name `connect` for their Minecraft server and `control` for their Pterodactyl panel.
-![alt text](image-11.png)
+![alt text](img/image-11.png)
 
 #### Setting up the panel VM
 
@@ -340,14 +340,14 @@ hostname -I | awk '{print $1}'
 - Click on Submit
 
 Use this image as an example.
-![alt text](image-12.png)
+![alt text](img/image-12.png)
 
 ### Starting Wings
 
 To start wings on the Minecraft VM we need a token.
 
 - Go to the configuration tab of this node and click on `Generate Token`.
-- Copy the whole command and paste it into the console of the Minecraft server. ![alt text](image-13.png)
+- Copy the whole command and paste it into the console of the Minecraft server. ![alt text](img/image-13.png)
 - To test if wings is installed correctly you can run:
 
 ```bash
@@ -355,7 +355,7 @@ sudo wings
 ```
 
 - If is correct you will see a green heart on the left of your node.
-  ![alt text](image-14.png)
+  ![alt text](img/image-14.png)
 - Press `CTRL+C` in the console to exit wings
 - Use to following command so that Wings will run in the background
 
@@ -383,7 +383,7 @@ systemctl start wings
 - Under Resource Management you can find Memory, I have set memory to `22000` but you can go for a lower number if you are using a vanilla server
 - Disk space: `43000`
 - Egg: `Forge Minecraft`
-- Get the correct Forge version for your modpack and paste this in `Forge Version` under Service Variables. You can find this in the Curseforge app by clicking on the modpack you want to have as a server.![alt text](image-15.png)
+- Get the correct Forge version for your modpack and paste this in `Forge Version` under Service Variables. You can find this in the Curseforge app by clicking on the modpack you want to have as a server.![alt text](img/image-15.png)
   - So in my case I fill in `1.20.1-47.2.18`
 - Save
   If you click on the pop up button after creation you can see the terminal and the server should be starting now.
@@ -410,8 +410,8 @@ This means that a Minecraft server is currently running on your Minecraft VM, be
 - Go to the Pterodactyl panel and create a new server
 - Wait for it to install everything.
 - Wait for the EULA popup and then close it. You will see that the console will output a message like this and then will stop: `[main/INFO] [minecraft/Main]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.`
-- Go to the `Files` tab and delete the following files from the container ![alt text](image-16.png)
-- Head to the Settings tab and SFTP into the server. ![alt text](image-17.png)
+- Go to the `Files` tab and delete the following files from the container ![alt text](img/image-16.png)
+- Head to the Settings tab and SFTP into the server. ![alt text](img/image-17.png)
   - In this case the address is `sftp://bad.47fd94fc@localhost:2022` and the password is the same as to accessing the panel. You can also press the `Launch SFTP` button and it will open WinSCP or any other client that you have installed.
   - Your SFTP password is the same as the password you use to access this panel.
 - After loading you will see the files that are still left in the container. Add the zip file we made earlier to it.
@@ -422,7 +422,7 @@ This means that a Minecraft server is currently running on your Minecraft VM, be
   - Delete the command `-XX:+AlwaysPreTouch`
   - Copy everything else after `-Xms8G -Xmx8G`
   - Head to your servers and open the settings for the server you are making.
-  - Click on the `Startup` tab and paste the copied content in `Startup Command` after `-XX:MaxRAMPercentage=95.0`![alt text](image-18.png)
+  - Click on the `Startup` tab and paste the copied content in `Startup Command` after `-XX:MaxRAMPercentage=95.0`![alt text](img/image-18.png)
   - Click on `Save modifications`
 - Start the server and accept the EULA
 - Everything should start and you can now access the server
