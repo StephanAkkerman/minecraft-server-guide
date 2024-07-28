@@ -1,4 +1,4 @@
-# How to set up a free Minecraft server & panel in Oracle Cloud
+# How to set up a free Minecraft server & panel in Oracle Cloud 🆓
 
 This guide covers setting up a free Minecraft server and then using Pterodactyl to create a panel for it. Everything will be hosted in the cloud for free by using Oracle Cloud. All the steps in this guide can be followed for free but be sure to check the [Prerequisites](#Prerequisites).
 
@@ -15,10 +15,10 @@ If you are using Linux or Mac you can probably skip this because this is already
 - [WinSCP](https://winscp.net/eng/download.php): To access the files on your virtual machine.
 
 ## Table of Contents
-- [Creating a Minecraft server](#Creating-a-free-cloud-hosted-Minecraft-server)
-- [Pterodactyl Panel](#Pterodactyl-panel)
+- [Creating a Minecraft server](#Creating-a-free-cloud-hosted-Minecraft-server-☁️)
+- [Pterodactyl Panel](#Pterodactyl-panel-🦖)
 
-## Creating a free cloud-hosted Minecraft server
+## Creating a free cloud-hosted Minecraft server ☁️
 
 In this section, we set up the Minecraft server using Oracle Cloud. If you prefer watching a video instead of reading, I'd suggest [this video](https://www.youtube.com/watch?v=0kFjEUDJexI) which covers everything in this section.
 
@@ -150,13 +150,15 @@ You can restart it by simply heading over to the overview of instances and click
 
 If you get an error `Error: DBUS_ERROR: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory` then use the following commands.
 
-- `sudo apt-get install dbus`
-- `sudo systemctl start dbus`
-- `sudo systemctl enable dbus`
-- `sudo systemctl status dbus`
-- `sudo systemctl restart firewalld`
-- `sudo firewall-cmd --state`
-  And try the same commands again.
+```bash
+sudo apt-get install dbus
+sudo systemctl start dbus
+sudo systemctl enable dbus
+sudo systemctl status dbus
+sudo systemctl restart firewalld
+sudo firewall-cmd --state
+```
+Then try the same commands for Firewalld again.
 
 ### Screen
 The following commands are handy to know if you plan on not using the Pterodactyl panel or any other panel. These commands are for Screen, which you can use to run something in the background such as your server.
@@ -195,7 +197,7 @@ sudo chown -R ubuntu:ubuntu .
 - Open WinSCP and follow this tutorial on how to connect: [Connecting to the Compute Instance Using WSCP (oracle.com)](https://docs.oracle.com/en/cloud/saas/enterprise-performance-management-common/diepm/epm_agent_auto_compute_connect_wscp.html)
 - You will now be able to access all the files on the cloud and make adjustments to them
 
-## Pterodactyl Panel
+## Pterodactyl Panel 🦖
 
 This section covers the process of how to set up the Pterodactyl panel, which is very useful for managing your server. If you prefer watching a video over reading, then I suggest watching this [video](https://www.youtube.com/watch?v=ZQ-00n2RTMU) which covers almost everything in this section.
 
