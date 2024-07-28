@@ -17,6 +17,7 @@ If you are using Linux or Mac you can probably skip this because this is already
 ## Table of Contents
 - [Creating a Minecraft server](#Creating-a-free-cloud-hosted-Minecraft-server-☁️)
 - [Pterodactyl Panel](#Pterodactyl-panel-🦖)
+- [Oracle Cloud Budget](#Oracle-Cloud-Budget)
 
 ## Creating a free cloud-hosted Minecraft server ☁️
 
