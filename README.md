@@ -15,10 +15,10 @@ If you are using Linux or Mac you can probably skip this because this is already
 - [WinSCP](https://winscp.net/eng/download.php): To access the files on your virtual machine.
 
 ## Table of Contents
-- [Creating a Minecraft server](#creating-a-minecraft-server)
-- [Pterodactyl Panel](#pterodactyl-panel)
+- [Creating a Minecraft server](#Creating-a-free-cloud-hosted-Minecraft-server)
+- [Pterodactyl Panel](#Pterodactyl-panel)
 
-## Creating a Minecraft server
+## Creating a free cloud-hosted Minecraft server
 
 In this section, we set up the Minecraft server using Oracle Cloud. If you prefer watching a video instead of reading, I'd suggest [this video](https://www.youtube.com/watch?v=0kFjEUDJexI) which covers everything in this section.
 
@@ -63,7 +63,7 @@ Click on `Add Ingress Rules` and fill in the following:
 - IP Protocol: `UDP`
   This will port forward everything, if you want to be on the safe side you can fill in the `Destination Port Range` with the port you want to forward.
 
-### SSH into server
+### SSH into the server
 
 This can be done using [PuTTY](https://www.putty.org/) or using the command line if you have SSH set up.
 If you are unsure if you have SSH set up on your PC, then open a terminal and write `ssh`. If there is no error then you can use SSH and following the steps of [Command line](#command-line).
@@ -72,7 +72,7 @@ If you would like to use the command line method on Windows, then follow these [
 
 #### Command line
 
-Start by locating the private key file that you saved previously. Copy the location of this file, for instance `C:\Users\Stephan\Downloads\oracle\private.key`. Next, find the IP address of your Oracle VM.
+Start by locating the private key file that you saved previously. Copy the location of this file for instance, `C:\Users\Stephan\Downloads\oracle\private.key`. Next, find the IP address of your Oracle VM.
 Use the following syntax to SSH into it:
 
 ```bash
@@ -92,12 +92,12 @@ The second method of accessing the terminal of your VM is by using [PuTTY](https
 - Download and install PuTTY
 - Search for `PuTTYgen` in your Windows applications and open it
 - Click on `Load` and search for your private key and open it
-  - Be sure to set the file search on `All Files (*.*)` otherwise you won't be able to find your key. 
+  - Be sure to set the file search to `All Files (*.*)` otherwise you won't be able to find your key. 
 ![alt text](img/image-5.png)
 - After loading the key press on `Save private key`
   - You can save it without a passphrase
 - Now open PuTTY
-- Use `ubuntu@{your ip address}` for the host name
+- Use `ubuntu@{your ip address}` for the hostname
 - Then open the Credentials menu, found under Auth\
 ![alt text](img/image-6.png)
 - Click on `Browse...` behind the text box for `Private key file for authentication`
@@ -128,7 +128,7 @@ apt update
 apt upgrade
 ```
 
-After the upgrade you will see the following screen. You can press `Tab` to select `<Ok>` and then enter to exit it.
+After the upgrade, you will see the following screen. You can press `Tab` to select `<Ok>` and then enter to exit it.
 ![alt text](img/image-7.png)\
 There might be multiple services that need to be restarted, just leave them on their default settings and select `<Ok>`.
 
@@ -141,7 +141,7 @@ firewall-cmd --permanent --zone=public --add-port=25565/udp
 firewall-cmd --reload
 ```
 
-If you get the following screen after installing firewalld then restart the VM.
+If you get the following screen after installing Firewalld then restart the VM.
 ![alt text](img/image-8.png)\
 You can restart it by simply heading over to the overview of instances and clicking reboot.
 ![alt text](img/image-9.png)
@@ -159,36 +159,41 @@ If you get an error `Error: DBUS_ERROR: Failed to connect to socket /run/dbus/sy
   And try the same commands again.
 
 ### Screen
+The following commands are handy to know if you plan on not using the Pterodactyl panel or any other panel. These commands are for Screen, which you can use to run something in the background such as your server.
+If you are following this guide and plan to use the panel then you can skip this section.
 
 To list all attached and detached screen
-
 ```shell
 screen -ls
 ```
 
 To stop a screen session
-
 ```shell
 screen -XS <session-id> quit
 ```
 
-To run the server in a screen session (be sure to be in the same directory as the file)
-
+To run the server in a screen session (be sure to be in the same directory as the `run.sh` file)
 ```shell
 screen ./run.sh
 ```
 
 To exit a screen session: `CTRL A + D`
-To reattach to a session
 
-```
+To reattach to a session
+```shell
 screen -r <session-id>
 ```
 
 ### Accessing the server files
 
-- `sudo chown -R ubuntu:ubuntu .`
-- winscp: [Connecting to the Compute Instance Using WSCP (oracle.com)](https://docs.oracle.com/en/cloud/saas/enterprise-performance-management-common/diepm/epm_agent_auto_compute_connect_wscp.html)
+If you do not plan to use the Pterodactyl panel, then follow this section. Otherwise, you can skip it since it will be covered in the following section.
+
+- SSH into the VM like you did before and execute this command:
+```shell
+sudo chown -R ubuntu:ubuntu .
+```
+- Open WinSCP and follow this tutorial on how to connect: [Connecting to the Compute Instance Using WSCP (oracle.com)](https://docs.oracle.com/en/cloud/saas/enterprise-performance-management-common/diepm/epm_agent_auto_compute_connect_wscp.html)
+- You will now be able to access all the files on the cloud and make adjustments to them
 
 ## Pterodactyl Panel
 
@@ -221,7 +226,7 @@ This is an example of someone that uses the host name `connect` for their Minecr
 #### Setting up the panel VM
 
 - Start by opening PuTTY or your terminal and SSH into the newly created VM
-- Follow the same instructions are described in [updating the software](#Updating-the-software)
+- Follow the same instructions described in [updating the software](#Updating-the-software)
 - Update the firewall settings, this should be done for both the panel and server VM, copy the commands below and paste them in the terminals
 
 ```bash
@@ -253,14 +258,14 @@ This will do a Q&A session with you where you need to fill in the following answ
   - _press enter_ (use default)
 - Database username (pterodactyl)
   - _press enter_
-- Password (press enter to use randomly generated password)
+- Password (press enter to use a randomly generated password)
   - Just use a password that you can easily remember
 - Select timezone
   - You can find your timezone on [this website](https://www.php.net/manual/en/timezones.php)
 - Provide the email address that will be used to configure Let's Encrypt and Pterodactyl
   - Fill in your email
 - Email address for the initial admin account
-  - Use the same email (can be differrent)
+  - Use the same email (can be different)
 - Username
   - `admin`
 - Fill in your first and last name
@@ -280,7 +285,7 @@ This will do a Q&A session with you where you need to fill in the following answ
 
 ### Setting up wings
 
-Paste the following command in the terminal of the Minecraft VM (this is the same command as we used for the panel)
+Paste the following command in the terminal of the Minecraft VM (this is the same command we used for the panel)
 
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/pterodactyl-installer/pterodactyl-installer/master/install.sh)
@@ -322,12 +327,12 @@ Before creating the node we need to create a location.
 - Click on the settings icon on the top right.
 - Click on Locations
 - Create new
-- Fill in the Short Code, for instance `node` and save it
+- Fill in the Short Code for instance, `node`, and save it
 
 Now that we got the location we can create a new node.
 
 - Head to Nodes and create a new node
-- Add a name, for instance `Main`
+- Add a name for instance, `Main`
 - FQDN: `{minecraft server host name}.{domain}.{suffix}`
 - Total memory: 24000
 - Memory Over-Allocation: 0
@@ -362,13 +367,13 @@ To start wings on the Minecraft VM we need a token.
 - Go to the configuration tab of this node and click on `Generate Token`.
 - Copy the whole command and paste it into the console of the Minecraft server.\
 ![alt text](img/image-13.png)
-- To test if wings is installed correctly you can run:
+- To test if Wings is installed correctly you can run:
 
 ```bash
 sudo wings
 ```
 
-- If is correct you will see a green heart on the left of your node.\
+- If this is correct you will see a green heart on the left of your node.\
   ![alt text](img/image-14.png)
 - Press `CTRL+C` in the console to exit wings
 - Use to following command so that Wings will run in the background
@@ -379,18 +384,18 @@ systemctl start wings
 
 ### Creating a nest
 
-- Head to the Nests option in the side bar
+- Head to the Nests option in the sidebar
 - Click on `Minecraft`
 - Select `Forge Minecraft` in the options for Nest Eggs
-- In Configuration you will find multiple lines in Docker Images, delete everything there
+- In Configuration, you will find multiple lines in Docker Images, delete everything there
 - Go to [pterodactyl-images](https://github.com/Software-Noob/pterodactyl-images#java-eclipse-temurin-amd64arm64) and head to the section `Java Eclipse Temurin [AMD64/ARM64]`
-- Copy the correct java version for your Minecraft version. You can find the java version for each Minecraft version [here](https://docs.mcserversoft.com/advanced/java-version)
+- Copy the correct Java version for your Minecraft version. You can find the Java version for each Minecraft version [here](https://docs.mcserversoft.com/advanced/java-version)
   - If you're using Minecraft version 1.20.1 this will be `ghcr.io/software-noob/pterodactyl-images:java_17`
 - Leave everything else to their defaults and hit save
 
 ### Setting up the server
 
-- Head to Servers in the left side bar
+- Head to Servers in the left sidebar
 - Click on `Create New`
 - Fill in the name of your server
 - Add yourself as the server owner, you can search by name and email address
@@ -399,13 +404,13 @@ systemctl start wings
 - Egg: `Forge Minecraft`
 - Get the correct Forge version for your modpack and paste this in `Forge Version` under Service Variables. You can find this in the Curseforge app by clicking on the modpack you want to have as a server.\
 ![alt text](img/image-15.png)
-  - So in my case I fill in `1.20.1-47.2.18`
+  - So in my case, I fill in `1.20.1-47.2.18`
 - Save
   If you click on the pop up button after creation you can see the terminal and the server should be starting now.
 
 #### Debugging
 
-During the starting of your server you can run into this error.
+During the starting of your server, you can run into this error.
 
 ```
 Error Event [a42aeaba-5a57-4b31-b888-f76257c1ab0f]: environment/docker: failed to start container: Error response from daemon: driver failed programming external connectivity on endpoint 1ba18bdc-05e9-4b6a-be5e-9a2df92f965e (7ed1002d6be9d188a6400cf5b06d94ac04cd0940a9c3e60b991f639eb0e0c6f0): failed to bind port 10.0.0.236:25565/tcp: Error starting userland proxy: listen tcp4 10.0.0.236:25565: bind: address already in use
@@ -416,7 +421,7 @@ This means that a Minecraft server is currently running on your Minecraft VM, be
 ## Installing the Curseforge server
 
 - Head to the [Files section](https://www.curseforge.com/minecraft/modpacks/craft-to-exile-2/files/all) of your preferred modpack
-- Click on the latest release and at the bottom next to Changelog you will find `Additional Files` click on it.
+- Click on the latest release and at the bottom next to the Changelog you will find `Additional Files` click on it.
 - Download the server pack
 - Extract the server pack and run the `.bat` or `.sh` file, depending on your OS. This will start the server locally and create some necessary files.
 - Wait for it to stop due to the eula.txt and exit
@@ -429,7 +434,7 @@ This means that a Minecraft server is currently running on your Minecraft VM, be
 ![alt text](img/image-16.png)
 - Head to the Settings tab and SFTP into the server.\
 ![alt text](img/image-17.png)
-  - In this case the address is `sftp://bad.47fd94fc@localhost:2022` and the password is the same as to accessing the panel. You can also press the `Launch SFTP` button and it will open WinSCP or any other client that you have installed.
+  - In this case, the address is `sftp://bad.47fd94fc@localhost:2022` and the password is the same as to access the panel. You can also press the `Launch SFTP` button and it will open WinSCP or any other client that you have installed.
   - Your SFTP password is the same as the password you use to access this panel.
 - After loading you will see the files that are still left in the container. Add the zip file we made earlier to it.
   - You can also delete the files from the previous step here.
