@@ -482,4 +482,4 @@ This is advised by the wiki of Craft to Exile 2.
 
 - I used multiple YouTube videos of [HP_crafter](https://www.youtube.com/@hp_crafter4609) for this guide.
 - For the section [Installing the Curseforge server](#Installing-the-Curseforge-server) I used this [video](https://www.youtube.com/watch?v=G_lAAzOO9c0)
-- I used this [video] as a guide for the section [Automatically restart every 6 hours](#Automatically-restart-every-6-hours)
+- I used this [video](https://www.youtube.com/watch?v=MyIA9kse-Ec) as a guide for the section [Automatically restart every 6 hours](#Automatically-restart-every-6-hours)
