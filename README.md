@@ -6,7 +6,7 @@ I will use the Curseforge modpack [Craft to Exile 2](https://www.curseforge.com/
 
 ## Prerequisites
 
-- **A valid credit card**: This cannot be a single-use credit card, we will be using this to sign up for Oracle Cloud and using pay-as-you-go to get the free VM as quickly as possible.
+- **A valid credit card**: This cannot be a single-use credit card, we will be using this to sign up for Oracle Cloud and using pay-as-you-go to get the free VM as quickly as possible. <ins>If you follow the steps in this guide correctly nothing will be deducted from your credit card.</ins>
 - **A domain:** This is necessary for the Pterodactyl panel. You can follow [this guide](https://www.youtube.com/watch?v=kds41s3tjEY) on how to get a free domain (or skip this if you do not care about the panel).
 
 ### Windows Users
