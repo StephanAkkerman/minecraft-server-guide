@@ -28,11 +28,9 @@ In this section, we set up the Minecraft server using Oracle Cloud. If you prefe
 ### Creating an account
 
 - Start by [signing up for Oracle Cloud](https://signup.cloud.oracle.com/) if you have not yet done it.
-- Set a Home Region as close as possible, I am from The Netherlands so I will select `Netherlands Northwest (Amsterdam)`
-![alt text](img/image.png)
-- Add your Payment / Identity Verification ![alt text](img/image-1.png)
-- As you can see this is where the Credit Card is necessary for 
-![alt text](img/image-2.png)
+- Set a Home Region as close as possible, I am from The Netherlands so I will select `Netherlands Northwest (Amsterdam)` <img src="img/image.png" width="700">
+- Add your Payment / Identity Verification </br> <img src="img/image-1.png" width="600">
+- After filling in all the details, you will get the following pop-up. You can only fill in a credit card that is not single-use. <img src="img/image-2.png" width="500">
 - $1 will be reserved from your credit card, but you will instantly get it back
 
 ### Setting up the VM instance
