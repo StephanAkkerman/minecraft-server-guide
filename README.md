@@ -478,6 +478,17 @@ This is advised by the wiki of Craft to Exile 2.
 - To test that everything has been set correctly, click the `Run Now` button on the Schedules overview.
 - Head back to the server's console and wait for it to perform all actions.
 
+# Oracle Cloud Budget
+If you are afraid of spending money on the virtual machines hosted in Oracle Cloud then you can set a budget.
+
+- Head to the [Budgets overview](https://cloud.oracle.com/usage/budgets) in Oracle Cloud
+- Give it a name and description (mandatory)
+- Set the `Budget Amount` to `1`
+- Set the `Threshold Type` to `Absolute Amount`
+- Set `Threshold Amount` to `1`
+- Fill in your email
+- Save the budget
+
 ## Acknowledgements
 
 - I used multiple YouTube videos of [HP_crafter](https://www.youtube.com/@hp_crafter4609) for this guide.
