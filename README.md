@@ -6,11 +6,11 @@ I will use the Curseforge modpack [Craft to Exile 2](https://www.curseforge.com/
 
 ## Prerequisites
 
-- **A valid credit card**: This cannot be a single-use credit card, we will be using this to sign up for Oracle Cloud and using pay-as-you-go to get the free VM as quickly as possible. <ins>If you follow the steps in this guide correctly nothing will be deducted from your credit card.</ins>
+- **A valid credit card (recommended)**: This cannot be a single-use credit card, we will be using this to sign up for Oracle Cloud and using pay-as-you-go to get the free VM as quickly as possible. If you do not have a credit card or do not want to use it, getting a free VM will take much longer. <ins>If you follow the steps in this guide correctly, nothing will be deducted from your credit card.</ins>
 - **A domain:** This is necessary for the Pterodactyl panel. You can follow [this guide](https://www.youtube.com/watch?v=kds41s3tjEY) on how to get a free domain (or skip this if you do not care about the panel).
 
 ### Windows Users
-If you are using Linux or Mac you can probably skip this because this is already integrated with your PC. Windows users should install the following programs.
+If you are using Linux or Mac, you can probably skip this because this is already integrated with your PC. Windows users should install the following programs.
 - [Terminal SSH](https://learn.microsoft.com/en-us/windows/terminal/tutorials/ssh) / [PuTTY](https://www.putty.org/): To access the terminal for the virtual machine and execute commands.
 - [WinSCP](https://winscp.net/eng/download.php): To access the files on your virtual machine.
 
@@ -29,29 +29,29 @@ In this section, we set up the Minecraft server using Oracle Cloud. If you prefe
 ### Creating an account
 
 - Start by [signing up for Oracle Cloud](https://signup.cloud.oracle.com/) if you have not yet done it.
-- Set a Home Region as close as possible, I am from The Netherlands so I will select `Netherlands Northwest (Amsterdam)` <img src="img/image.png" width="700">
+- Set a Home Region as close as possible, I am from the Netherlands, so I will select `Netherlands Northwest (Amsterdam)` </br> <img src="img/image.png" width="700">
 - Add your Payment / Identity Verification </br> <img src="img/image-1.png" width="600">
 - After filling in all the details, you will get the following pop-up. You can only fill in a credit card that is not single-use. </br> <img src="img/image-2.png" width="500">
 - $1 will be reserved from your credit card, but you will instantly get it back
 
 ### Setting up the VM instance
 
-After signing up head to the Oracle Cloud [dashboard](https://cloud.oracle.com/) and scroll down to `Create a VM instance`.
+After signing up, head to the Oracle Cloud [dashboard](https://cloud.oracle.com/) and scroll down to `Create a VM instance`.
 
 - Here you want to fill in a name, for instance `Minecraft VM`.
 - Leave everything to their default settings, except for the following.
-  - **Image**: This should be set to `Ubuntu`, you want to use the latest Ubuntu version that is not Minimal. At the time of writing that is `Canonical Ubuntu 22.04`
-  - **Shape**: You want to set the `Shape series` to `Ampere`, this will give you one option for `Shape name` which should be `VM.Standard.A1.Flex`. Then for the number of `OCPUs` set it to 4 and the `Amount of memory (GB)` should be set to 24.
-- For the final step on this page you want to click on `Save private key`, this is necessary for later steps where we access the files of the server.
+  - **Image**: This should be set to `Ubuntu`, you want to use the latest Ubuntu version that is not Minimal. At the time of writing, that is `Canonical Ubuntu 22.04`
+  - **Shape**: You want to set the `Shape series` to `Ampere`, this will give you one option for `Shape name` which should be `VM.Standard.A1.Flex`. Then, for the number of `OCPUs` set it to 4, and the `Amount of memory (GB)` should be set to 24.
+- For the final step on this page, you want to click on `Save private key`, this is necessary for later steps where we access the files of the server.
 - Now you can press `Create` at the bottom left of the page.
 
-If you get an error that the VM is not available, then change your settings to `Pay As You Go`. You can do this in the [Billing settings](https://cloud.oracle.com/invoices-and-orders/upgrade-and-payment), under the tab `Upgrade and Manage Payment`. Just like registering this change will reserve about 100 dollars on your credit card and instantly give it back after confirming the credit card.
+If you get an error that the VM is not available, then change your settings to `Pay As You Go`. You can do this in the [Billing settings](https://cloud.oracle.com/invoices-and-orders/upgrade-and-payment), under the tab `Upgrade and Manage Payment`. Just like registering, this change will reserve about 100 dollars on your credit card and instantly give it back after confirming the credit card.
 
 #### Setting up the subnet
 
-After creating the VM you will see the overview of the instance. On the tab `Instance information` you will see the **Subnet** under `Primary VNIC`, click on it.
+After creating the VM, you will see the overview of the instance. On the tab `Instance information`, you will see the **Subnet** under `Primary VNIC`, click on it.
 ![alt text](img/image-3.png)\
-This will bring you to the overview of the subnet information, here you want to click on the only option under `Security Lists`.
+This will bring you to the overview of the subnet information, where you want to click on the only option under `Security Lists`.
 ![alt text](img/image-4.png)\
 Click on `Add Ingress Rules` and fill in the following:
 
@@ -60,12 +60,12 @@ Click on `Add Ingress Rules` and fill in the following:
   Click on `+ Another Ingress Rule` and fill in the following for that:
 - Source CIDR: `0.0.0.0/0`
 - IP Protocol: `UDP`
-  This will port forward everything, if you want to be on the safe side you can fill in the `Destination Port Range` with the port you want to forward.
+  This will port forward everything. If you want to be on the safe side, you can fill in the `Destination Port Range` with the port you want to forward.
 
 ### SSH into the server
 
 This can be done using [PuTTY](https://www.putty.org/) or using the command line if you have SSH set up.
-If you are unsure if you have SSH set up on your PC, then open a terminal and write `ssh`. If there is no error then you can use SSH and following the steps of [Command line](#command-line).
+If you are unsure if you have SSH set up on your PC, then open a terminal and write `ssh`. If there is no error, then you can use SSH and following the steps of [Command line](#command-line).
 
 If you would like to use the command line method on Windows, then follow these [steps](https://learn.microsoft.com/en-us/windows/terminal/tutorials/ssh).
 
@@ -91,7 +91,7 @@ The second method of accessing the terminal of your VM is by using [PuTTY](https
 - Download and install PuTTY
 - Search for `PuTTYgen` in your Windows applications and open it
 - Click on `Load` and search for your private key and open it
-  - Be sure to set the file search to `All Files (*.*)` otherwise you won't be able to find your key. 
+  - Be sure to set the file search to `All Files (*.*)` otherwise, you won't be able to find your key. 
 ![alt text](img/image-5.png)
 - After loading the key press on `Save private key`
   - You can save it without a passphrase
