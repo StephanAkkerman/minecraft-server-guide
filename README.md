@@ -134,6 +134,10 @@ There might be multiple services that need to be restarted, just leave them on t
 ### Firewall settings
 
 ```bash
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -F
 apt install firewalld
 firewall-cmd --permanent --zone=public --add-port=25565/tcp
 firewall-cmd --permanent --zone=public --add-port=25565/udp
@@ -231,6 +235,10 @@ This is an example of someone that uses the host name `connect` for their Minecr
 - Update the firewall settings, this should be done for both the panel and server VM, copy the commands below and paste them in the terminals
 
 ```bash
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -F
 apt install firewalld
 firewall-cmd --permanent --zone=public --add-port=25565/tcp
 firewall-cmd --permanent --zone=public --add-port=80/tcp
